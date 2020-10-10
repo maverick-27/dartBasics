@@ -23,7 +23,17 @@ class Deck {
     cards.shuffle();
   }
 
-  cardsWithSuit(){
+  cardsWithSuit(String suit) {
+    return cards.where((card) => card.suit == suit);
+  }
 
+  deal(int handSize) {
+    var hand = cards.sublist(0, handSize);
+    cards.sublist(handSize);
+    return hand;
+  }
+
+  removeCard(String suit, String rank) {
+    cards.removeWhere((card) => (card.suit == suit && card.rank == rank));
   }
 }
